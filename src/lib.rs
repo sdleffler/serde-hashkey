@@ -105,7 +105,7 @@ mod key;
 mod ser;
 
 #[doc(inline)]
-pub use crate::de::from_key;
+pub use crate::de::{from_key, Deserializer};
 #[doc(inline)]
 pub use crate::error::{Error, Result};
 #[cfg(feature = "ordered-float")]
@@ -114,4 +114,4 @@ pub use crate::float::{FloatPolicy, FloatRepr, NeverFloat, RejectFloatPolicy};
 #[doc(inline)]
 pub use crate::key::{Float, Integer, Key};
 #[doc(inline)]
-pub use crate::ser::to_key;
+pub use crate::ser::{to_key, Serializer};

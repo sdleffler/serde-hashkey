@@ -98,6 +98,8 @@ where
     }
 }
 
+/// The deserializer type for a `Key<F>`. This is useful for working with crates
+/// like `serde_transcode`.
 pub struct Deserializer<'de, F>
 where
     F: FloatPolicy,
@@ -109,6 +111,7 @@ impl<'de, F> Deserializer<'de, F>
 where
     F: FloatPolicy,
 {
+    /// Construct a new deserializer from a key to be deserialized.
     pub fn new(value: &'de Key<F>) -> Self {
         Self { value }
     }

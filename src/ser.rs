@@ -60,9 +60,19 @@ where
     value.serialize(Serializer(PhantomData))
 }
 
-struct Serializer<F>(PhantomData<F>)
+/// The serializer type for a `Key<F>`. This is useful for working with
+/// crates like `serde_transcode`, which need to work directly with the
+/// serializer instead of `to_key` or `to_key_with_ordered_float`.
+pub struct Serializer<F>(PhantomData<F>)
 where
     F: FloatPolicy;
+
+impl<F: FloatPolicy> Serializer<F> {
+    /// Construct a new serializer.
+    pub fn new() -> Self {
+        Self(PhantomData)
+    }
+}
 
 impl<F> ser::Serializer for Serializer<F>
 where
